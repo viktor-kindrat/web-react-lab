@@ -1,3 +1,9 @@
-
+.PreviewPage {
+  padding-top: 100px;
+  background: linear-gradient(180deg, rgba(0, 28, 36, 0.5) 0%, rgba(132, 255, 0, 0) 100%), url("../Images/mainBackground.png") right top no-repeat;
+  background-size: cover;
+  min-height: 100vh;
+  color: #ffffff;
+}
 
 /*# sourceMappingURL=PreviewPage.css.map */

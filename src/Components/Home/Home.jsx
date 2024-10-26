@@ -5,7 +5,6 @@ import PreviewPage from "../PreviewPage/PreviewPage.jsx";
 function Home() {
     return (
         <main className="Home">
-            HOME PAGE
             <PreviewPage />
         </main>
     )
