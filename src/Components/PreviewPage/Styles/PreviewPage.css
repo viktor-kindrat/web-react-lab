@@ -1,9 +1,25 @@
 .PreviewPage {
-  padding-top: 100px;
-  background: linear-gradient(180deg, rgba(0, 28, 36, 0.5) 0%, rgba(132, 255, 0, 0) 100%), url("../Images/mainBackground.png") right top no-repeat;
-  background-size: cover;
   min-height: 100vh;
   color: #ffffff;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 0 150px;
+}
+.PreviewPage .PreviewPage__content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  margin-top: 50vh;
+  transform: translateY(-50%);
+  gap: 15px;
+}
+
+@media screen and (max-width: 900px) {
+  .PreviewPage {
+    padding: 25px;
+  }
 }
 
 /*# sourceMappingURL=PreviewPage.css.map */

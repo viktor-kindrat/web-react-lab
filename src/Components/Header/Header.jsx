@@ -9,7 +9,10 @@ function Header() {
     let go = useNavigate()
 
     return (
-        <Box component="header" className="Header" height="75px" width="100%" padding="10px 25px"
+        <Box component="header" className="Header" height="75px" width="100%" padding={{
+            xs: "10px 25px",
+            md: "10px 150px"
+        }}
              display="flex" flexDirection="row" alignItems="center" justifyContent="space-between"
              position="absolute" top="0" left="0">
             <img height={35} width={35} src={whiteLogo} alt="Logo" className="Header__logo"/>
