@@ -6,7 +6,9 @@ function PreviewPage() {
         <Box maxWidth="xl" component="section" className="PreviewPage">
             <Box component="div" className="PreviewPage__content">
                 <Typography textTransform="uppercase" component="h1" variant="h2">
-                    Best insects on <br/> the wild west!
+                    <Typography component="span" variant="h2" fontWeight="800">
+                        Best insects
+                    </Typography> on <br/> the wild west!
                 </Typography>
                 <Typography component="p" variant="body1">
                     Buy one of best insects in one click!

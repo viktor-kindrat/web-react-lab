@@ -11,7 +11,7 @@ function Header() {
     return (
         <Box component="header" className="Header" height="75px" width="100%" padding={{
             xs: "10px 25px",
-            md: "10px 150px"
+            md: "10px 125px"
         }}
              display="flex" flexDirection="row" alignItems="center" justifyContent="space-between"
              position="absolute" top="0" left="0">
