@@ -24,7 +24,7 @@ function Footer() {
                    spacing={1}
             >
                 <Grid2 size={1}>
-                    <Typography component="h2" variant="h3">
+                    <Typography component="h2" variant="h2">
                         Branding stuff
                     </Typography>
                     <Typography component="p" variant="body2">

@@ -24,7 +24,7 @@ function BestGoodsCard({imageURL, description, name, backgroundColor}) {
                     className={"BestGoodsCard__image"}
                 />
                 <CardContent>
-                    <Typography color="#FFFFFF" gutterBottom variant="h5" component="div" textAlign="center">
+                    <Typography color="#FFFFFF" gutterBottom variant="h4" component="div" textAlign="center">
                         {name}
                     </Typography>
                     <Typography marginBlockEnd="20px" color="#FFFFFFAA" noWrap variant="body2" textAlign="center">

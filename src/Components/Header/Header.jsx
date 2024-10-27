@@ -18,12 +18,12 @@ function Header() {
             <img height={35} width={35} src={whiteLogo} alt="Logo" className="Header__logo"/>
             <Box component="nav" className="Header__nav" columnGap="25px" display="flex" alignItems="center">
                 <Link to="#">
-                    <Typography underline="none" color="#ffffff" fontFamily="Roboto" variant="inherit">
+                    <Typography underline="none" color="#ffffff" fontFamily="Roboto" variant="body1">
                         Home
                     </Typography>
                 </Link>
                 <Link to="#">
-                    <Typography underline="none" color="#ffffff" fontFamily="Roboto" variant="inherit">
+                    <Typography underline="none" color="#ffffff" fontFamily="Roboto" variant="body1">
                         Catalog
                     </Typography>
                 </Link>
