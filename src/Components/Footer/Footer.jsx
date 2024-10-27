@@ -11,11 +11,18 @@ function Footer() {
     return (
         <Box width="100%" component="footer" className="Footer"
              padding={{
-                 xs: "10px 25px",
-                 md: "10px 125px"
-             }}>
-            <Grid2 container width="100%" className="Footer__credentials" alignContent="center" justifyContent="space-between"
-                   columns={3}>
+                 xs: "25px",
+                 md: "25px 125px"
+             }}
+             display="flex" flexDirection="column" gap="50px" alignItems="center" justifyContent="space-between"
+        >
+            <Grid2 container width="100%" className="Footer__credentials" alignContent="stretch" justifyContent="space-between"
+                   columns={{
+                       xs: 1,
+                       md: 3
+                   }}
+                   spacing={1}
+            >
                 <Grid2 size={1}>
                     <Typography component="h2" variant="h3">
                         Branding stuff
@@ -24,26 +31,37 @@ function Footer() {
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti error, est laboriosam magnam minus nisi.
                     </Typography>
                 </Grid2>
-                <Grid2 size={1} display="flex" alignContent="center" justifyContent="center">
+                <Grid2 size={1} display="flex" alignContent={{
+                    xs: "flex-start",
+                    md: "center"
+                }} justifyContent={{
+                    xs: "flex-start",
+                    md: "center"
+                }}>
                     <img src={logo} alt="logo" height="50" width="50" className="Footer__logo"/>
                 </Grid2>
-                <Grid2 size={1} display="flex" alignContent="flex-end" justifyContent="flex-end">
+                <Grid2 size={1} display="flex" alignContent="center" justifyContent={{
+                    xs: "flex-start",
+                    md: "flex-end"
+                }}>
                     <Link href="#">
-                        <InstagramIcon color="info" />
+                        <InstagramIcon fontSize="large" color="info" />
                     </Link>
                     <Link href="#">
-                        <FacebookIcon color="info" />
+                        <FacebookIcon fontSize="large" color="info" />
                     </Link>
                     <Link href="#">
-                        <TwitterIcon color="info" />
+                        <TwitterIcon fontSize="large" color="info" />
                     </Link>
                     <Link href="#">
-                        <LinkedInIcon color="info" />
+                        <LinkedInIcon fontSize="large" color="info" />
                     </Link>
                 </Grid2>
             </Grid2>
             <Box display="flex" alignItems="center" justifyContent="center" className="Footer__copy">
-                {new Date().getFullYear()} &copy; Copyright all rights reserved
+                <Typography component="p" variant="body2">
+                    {new Date().getFullYear()} &copy; Copyright all rights reserved
+                </Typography>
             </Box>
         </Box>
     )
