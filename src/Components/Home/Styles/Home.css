@@ -1,5 +1,6 @@
 .Home {
   background-size: cover;
+  border: 1px solid #171717;
 }
 .Home .Home__bg-group {
   z-index: 0;
