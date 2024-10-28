@@ -8,9 +8,10 @@ import * as LottiePlayer from "@lottiefiles/lottie-player";
 import Home from "../Home/Home.jsx";
 import Header from "../Header/Header.jsx";
 import Footer from "../Footer/Footer.jsx";
+import NotFoundPage from "../NotFoundPage/NotFoundPage.jsx";
+import Catalog from "../Catalog/Catalog.jsx";
 
 import {Route, Routes} from "react-router-dom";
-import NotFoundPage from "../NotFoundPage/NotFoundPage.jsx";
 
 function App() {
     return (
@@ -19,6 +20,7 @@ function App() {
             <Routes>
                 <Route path="*" element={<NotFoundPage/>}/>
                 <Route path="/" element={<Home/>}/>
+                <Route path="/catalog" element={<Catalog/>}/>
             </Routes>
             <Footer />
         </>

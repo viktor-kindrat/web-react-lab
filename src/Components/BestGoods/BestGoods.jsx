@@ -6,7 +6,8 @@ import image1 from "./Images/image1.png";
 import image2 from "./Images/image2.png";
 import image3 from "./Images/image3.png";
 import image4 from "./Images/image4.png";
-import BestGoodsCard from "../BestGoodsCard/BestGoodsCard.jsx";
+
+import CardWithImage from "../UI/CardWithImage/CardWithImage.jsx";
 
 let dataExample = [
     {
@@ -50,8 +51,8 @@ function BestGoods() {
                 {
                     dataExample.map((item, index) =>
                         <Grid2 key={`insect-container-${index}`} size={1} sx={{display: "flex", alignItems: "center", justifyContent: "center"}}>
-                            <BestGoodsCard imageURL={item.image_url}
-                                           description={item.description}
+                            <CardWithImage imageURL={item.image_url}
+                                           caption={item.description}
                                            name={item.name}
                                            backgroundColor={item.backgroundColor}
                             />
