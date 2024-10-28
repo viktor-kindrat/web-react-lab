@@ -1,12 +1,21 @@
 import "./Styles/Header.css"
 import {Box, Button, Typography} from "@mui/material";
-import {Link, useNavigate} from "react-router-dom"
+import {Link, useLocation, useNavigate} from "react-router-dom"
 
 import whiteLogo from "../../assets/SVG/logoWhite.svg"
+import darkLogo from "../../assets/SVG/logoDark.svg"
 import cartIcon from "./SVG/cart.svg"
+import {ShoppingCart} from "@mui/icons-material";
+import {useMemo} from "react";
+
 
 function Header() {
-    let go = useNavigate()
+    let go = useNavigate();
+
+    let location = useLocation();
+    let textColor = useMemo(() => {
+        return location.pathname === "/" ? "#FFFFFF" : "#171717"
+    }, [location]);
 
     return (
         <Box component="header" className="Header" height="75px" width="100%" padding={{
@@ -15,24 +24,25 @@ function Header() {
         }}
              display="flex" flexDirection="row" alignItems="center" justifyContent="space-between"
              position="absolute" top="0" left="0">
-            <img height={35} width={35} src={whiteLogo} alt="Logo" className="Header__logo"/>
+            <img height={35} width={35} src={textColor === "#FFFFFF" ? whiteLogo : darkLogo} alt="Logo" className="Header__logo"/>
             <Box component="nav" className="Header__nav" columnGap="25px" display="flex" alignItems="center">
-                <Link to="#">
-                    <Typography underline="none" color="#ffffff" fontFamily="Roboto" variant="body1">
+                <Link to="/">
+                    <Typography underline="none" color={textColor} fontFamily="Roboto" variant="body1">
                         Home
                     </Typography>
                 </Link>
-                <Link to="#">
-                    <Typography underline="none" color="#ffffff" fontFamily="Roboto" variant="body1">
+                <Link to="/catalog">
+                    <Typography underline="none" color={textColor} fontFamily="Roboto" variant="body1">
                         Catalog
                     </Typography>
                 </Link>
             </Box>
             <Box component="div" className="Header__nav" columnGap="5px" display="flex" alignItems="center">
-                <Button startIcon={<img height={25} width={25} className="Header__cart-img" src={cartIcon} alt="cart"/>}
+                <Button startIcon={<ShoppingCart color={textColor}/>}
                         className="Header__cart-btn"
                         variant="text"
-                        onClick={()=>go("/")}
+                        onClick={()=>go("/cart")}
+                        sx={{color: textColor}}
                 >
                     My cart
                 </Button>
