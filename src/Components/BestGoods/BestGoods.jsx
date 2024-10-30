@@ -45,7 +45,6 @@ function BestGoods() {
 
     useEffect(() => {
         let tl = gsap.timeline();
-
         if (opened) {
             tl.fromTo(".BestGoods__text", {
                 opacity: 0,
@@ -56,6 +55,10 @@ function BestGoods() {
                 y: 0,
                 stagger: 0.2,
             })
+        }
+
+        return () => {
+            tl.kill();
         }
     }, [opened]);
 
