@@ -2,8 +2,11 @@ import "./Styles/CatalogData.css";
 import {Button, CircularProgress, Grid2, Pagination, Typography} from "@mui/material";
 import CardWithImage from "../UI/CardWithImage/CardWithImage.jsx";
 import NotFoundPage from "../NotFoundPage/NotFoundPage.jsx";
+import {useNavigate} from "react-router-dom";
 
 function CatalogData({pending, error, data, totalPages, page, setPage}) {
+    let navigate = useNavigate();
+
     if (pending) {
         return <CircularProgress size={100}/>
     }
@@ -41,7 +44,7 @@ function CatalogData({pending, error, data, totalPages, page, setPage}) {
                                     </Typography>
                                 </Grid2>
                                 <Grid2 size={1}>
-                                    <Button fullWidth sx={{height: "100%"}} variant="contained">
+                                    <Button onClick={()=>navigate(`/catalog/${item._id}`)} fullWidth sx={{height: "100%"}} variant="contained">
                                         Details
                                     </Button>
                                 </Grid2>

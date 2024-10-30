@@ -7,6 +7,7 @@ import CatalogData from "../CatalogData/CatalogData.jsx";
 import {Box, Button, Grid2, TextField} from "@mui/material";
 import {FilterAlt} from "@mui/icons-material";
 import {Route, Routes} from "react-router-dom";
+import Insect from "../Insect/Insect.jsx";
 
 
 function Catalog() {
@@ -81,6 +82,7 @@ export default function CatalogRouter() {
     return (
         <Routes>
             <Route path="/" element={<Catalog/>} />
+            <Route path="/:id" element={<Insect/>} />
         </Routes>
     )
 }
