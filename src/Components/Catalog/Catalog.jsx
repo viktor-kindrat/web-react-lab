@@ -1,16 +1,13 @@
 import "./Styles/Catalog.css"
 
-import {Box, Button, CircularProgress, Grid2, Pagination, TextField, Typography} from "@mui/material";
-import {FilterAlt} from "@mui/icons-material";
-import CardWithImage from "../UI/CardWithImage/CardWithImage.jsx";
 import {useEffect, useState} from "react";
-
-import image2 from "../BestGoods/Images/image2.png";
-import image4 from "../BestGoods/Images/image4.png";
-
 import getCatalogItems from "../../lib/getCatalogItems.js";
-import NotFoundPage from "../NotFoundPage/NotFoundPage.jsx";
+
 import CatalogData from "../CatalogData/CatalogData.jsx";
+import {Box, Button, Grid2, TextField} from "@mui/material";
+import {FilterAlt} from "@mui/icons-material";
+import {Route, Routes} from "react-router-dom";
+
 
 function Catalog() {
     let [page, setPage] = useState(1);
@@ -22,7 +19,7 @@ function Catalog() {
 
     useEffect(() => {
         setPending(true);
-        getCatalogItems(filterValue, page)
+        getCatalogItems({}, page)
             .then(data => {
                 console.log(data)
                 switch (data.status) {
@@ -47,7 +44,7 @@ function Catalog() {
             .finally(() => {
                 setPending(false);
             })
-    }, [filterValue, page]);
+    }, [page]);
 
     return (
         <Box component="section" className="Catalog" minHeight="100vh" padding={{
@@ -67,6 +64,7 @@ function Catalog() {
                 <Grid2 size={1}>
                     <Button fullWidth sx={{height: "100%"}} variant="contained"
                             startIcon={<FilterAlt/>}
+                            disabled={pending}
                     >
                         Apply
                     </Button>
@@ -79,4 +77,10 @@ function Catalog() {
     )
 }
 
-export default Catalog;
+export default function CatalogRouter() {
+    return (
+        <Routes>
+            <Route path="/" element={<Catalog/>} />
+        </Routes>
+    )
+}
