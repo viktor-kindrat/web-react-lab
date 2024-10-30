@@ -86,7 +86,7 @@ function Catalog() {
                                label="Name"
                                variant="outlined"/>
                 </Grid2>
-                <Grid2 size={1} display="flex" justifyContent="center" spacing={1} flexDirection="column">
+                <Grid2 size={1} display="flex" justifyContent="center" flexDirection="column">
                     <Typography component="p" variant="body2">Price ($)</Typography>
                     <Slider
                         getAriaLabel={() => 'Price range'}
@@ -98,7 +98,7 @@ function Catalog() {
                         disableSwap
                     />
                 </Grid2>
-                <Grid2 size={1} display="flex" justifyContent="center" spacing={1} flexDirection="column">
+                <Grid2 size={1} display="flex" justifyContent="center" flexDirection="column">
                     <Typography component="p" variant="body2">Speed (m/h)</Typography>
                     <Slider
                         getAriaLabel={() => 'Speed range'}
