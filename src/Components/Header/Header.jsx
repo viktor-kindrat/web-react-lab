@@ -13,6 +13,11 @@ function Header() {
     let go = useNavigate();
     let cart = useSelector(state => state.cart);
 
+    console.log(cart)
+
+    let count = useMemo(() =>
+        cart.reduce((acc, current) => acc + current.count, 0),
+    [cart]);
 
     let location = useLocation();
     let textColor = useMemo(() => {
@@ -40,7 +45,7 @@ function Header() {
                 </Link>
             </Box>
             <Box component="div" className="Header__nav" columnGap="5px" display="flex" alignItems="center">
-                <Badge color="primary" badgeContent={cart.length} anchorOrigin={{
+                <Badge color="primary" badgeContent={count} anchorOrigin={{
                     vertical: 'top',
                     horizontal: 'left',
                 }}>

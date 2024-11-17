@@ -3,14 +3,20 @@ const initialState = []
 
 function cartReducer(state = initialState, action) {
     switch (action.type) {
-        case "card/addItem":
-            return state.map(item =>
-                item._id !== action.payload._id ? item : {
-                    ...item,
-                    count: item.count + action.payload.count
-                }
-            )
-        case "card/decrementItem":
+        case "cart/addItem":
+            let isExist = state.find(item => item._id === action.payload._id)?._id;
+
+            if (isExist) {
+                return state.map(item =>
+                    item._id !== action.payload._id ? item : {
+                        ...item,
+                        count: item.count + action.payload.count
+                    }
+                )
+            } else {
+                return [...state, action.payload]
+            }
+        case "cart/decrementItem":
             let itemToBeDecremented = state.find(item => item._id === action.payload._id);
 
             if (itemToBeDecremented.count === 1) {
@@ -21,17 +27,17 @@ function cartReducer(state = initialState, action) {
                     count: item.count - 1
                 })
             }
-        case "card/incrementItem":
+        case "cart/incrementItem":
             return state.map(item => item._id !== action.payload._id ? item : {
                 ...item,
                 count: item.count + 1
             })
-        case "card/setCount":
+        case "cart/setCount":
             return state.map(item => item._id !== action.payload._id ? item : {
                 ...item,
                 count: action.payload.count
             })
-        case "card/deleteItem":
+        case "cart/deleteItem":
             return state.filter(item => item._id === action.payload._id)
         default:
             return state
