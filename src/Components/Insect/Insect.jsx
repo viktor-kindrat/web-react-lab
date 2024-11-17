@@ -92,7 +92,7 @@ function Insect() {
         })
 
         setCountOfGoods(1)
-        // history.back();
+        history.back();
     }
 
     return (
