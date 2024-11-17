@@ -38,7 +38,7 @@ function cartReducer(state = initialState, action) {
                 count: action.payload.count
             })
         case "cart/deleteItem":
-            return state.filter(item => item._id === action.payload._id)
+            return state.filter(item => item._id !== action.payload._id)
         default:
             return state
     }
