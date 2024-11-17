@@ -20,7 +20,7 @@ function cartReducer(state = initialState, action) {
             let itemToBeDecremented = state.find(item => item._id === action.payload._id);
 
             if (itemToBeDecremented.count === 1) {
-                return state.filter(item => item._id === action.payload._id)
+                return state.filter(item => item._id !== action.payload._id)
             } else {
                 return state.map(item => item._id !== action.payload._id ? item : {
                     ...item,

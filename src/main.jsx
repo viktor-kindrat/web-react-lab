@@ -26,6 +26,10 @@ const theme = createTheme({
             fontSize: "calc(18px + 2.2vw)",
             fontWeight: "400"
         },
+        h3: {
+            fontSize: "calc(15px + 1.2vw)",
+            fontWeight: "200"
+        },
         h4: {
             fontSize: "calc(8px + 1vw)",
             fontWeight: "400"
