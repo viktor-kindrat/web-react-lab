@@ -29,7 +29,6 @@ function Catalog() {
         setPending(true);
         getCatalogItems(filter, page)
             .then(data => {
-                console.log(data)
                 switch (data.status) {
                     case 200:
                         setTotalPages(data.data.totalPages)
