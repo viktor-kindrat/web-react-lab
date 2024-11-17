@@ -13,8 +13,6 @@ function Header() {
     let go = useNavigate();
     let cart = useSelector(state => state.cart);
 
-    console.log(cart)
-
     let count = useMemo(() =>
         cart.reduce((acc, current) => acc + current.count, 0),
     [cart]);
