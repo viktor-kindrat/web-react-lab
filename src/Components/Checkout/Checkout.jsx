@@ -5,6 +5,8 @@ import {useNavigate} from "react-router-dom";
 import NotFoundPage from "../NotFoundPage/NotFoundPage.jsx";
 import * as Yup from "yup";
 import {useFormik} from "formik";
+import CheckoutError from "../CheckoutError/CheckoutError.jsx";
+import {useEffect, useState} from "react";
 
 
 const phoneNumberRegex = /^380\d{9}$|^\+?38\(0\d{2}\)\d{3}-\d{2}-\d{2}$|^\+?38\(0\d{2}\)\d{7}$|^\+?380\d{9}$/gi
@@ -51,6 +53,9 @@ function NothingToCheckout() {
 
 function Checkout() {
     const cart = useSelector(state => state.cart);
+    const navigate = useNavigate();
+    let [errorVisible, setErrorVisible] = useState(false);
+
     const formik = useFormik({
         initialValues: {
             name: '',
@@ -61,9 +66,21 @@ function Checkout() {
         },
         validationSchema: validationSchema,
         onSubmit: (values) => {
-            alert(JSON.stringify(values, null, 2));
+            navigate("/success")
         },
     });
+
+    useEffect(() => {
+        let x;
+        if (formik.isSubmitting && !formik.isValid) {
+            setErrorVisible(true)
+            x = setTimeout(() => {
+                console.log("TIMEOUT")
+                setErrorVisible(false)
+                clearTimeout(x)
+            }, 5000)
+        }
+    }, [formik.isSubmitting, formik.isValid]);
 
 
     if (cart.length === 0) {
@@ -74,14 +91,19 @@ function Checkout() {
         <Box component='section' className="Checkout" minHeight="100vh" padding={{
             xs: "100px 25px 25px 25px",
             md: "100px 150px 25px 150px"
-        }} display="flex" flexDirection="column" alignItems="center" justifyContent="flex-start" gap="50px">
+        }} display="flex" flexDirection="column" alignItems="center" justifyContent="flex-start" gap="50px" width="100%">
             <Typography component="h2" variant="h2" textAlign="center">Checkout</Typography>
             <Box component="form" display="flex" flexDirection="column" alignItems="center" justifyContent="flex-start"
-                 gap="25px" onSubmit={formik.handleSubmit}>
-                <Grid2 container spacing={2} columns={{
+                 gap="25px" onSubmit={formik.handleSubmit} width="100%">
+                <Grid2 width="100%" container spacing={2} columns={{
                     md: 2,
                     xs: 1
                 }}>
+                    <Grid2 size={2}>
+                        {
+                            errorVisible && <CheckoutError />
+                        }
+                    </Grid2>
                     <Grid2 size={1}>
                         <TextField
                             fullWidth
