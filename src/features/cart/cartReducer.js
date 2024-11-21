@@ -4,6 +4,9 @@ const initialState = []
 function cartReducer(state = initialState, action) {
     let update = [...state];
     switch (action.type) {
+        case "cart/clean":
+            localStorage.setItem("cart", JSON.stringify(initialState));
+            return initialState;
         case "cart/addItem":
             let isExist = state.find(item => item._id === action.payload._id)?._id;
 

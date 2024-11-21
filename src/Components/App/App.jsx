@@ -3,7 +3,7 @@ import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
-import * as LottiePlayer from "@lottiefiles/lottie-player";
+
 
 import Home from "../Home/Home.jsx";
 import Header from "../Header/Header.jsx";
@@ -12,8 +12,11 @@ import NotFoundPage from "../NotFoundPage/NotFoundPage.jsx";
 import Catalog from "../Catalog/Catalog.jsx";
 import CartPage from "../CartPage/CartPage.jsx";
 import Checkout from "../Checkout/Checkout.jsx";
+import Success from "../Success/Success.jsx";
+
 
 import {Route, Routes} from "react-router-dom";
+
 
 function App() {
     return (
@@ -25,10 +28,12 @@ function App() {
                 <Route path="/catalog/*" element={<Catalog/>}/>
                 <Route path="/cart/*" element={<CartPage/>}/>
                 <Route path="/checkout/*" element={<Checkout/>}/>
+                <Route path="/success/" element={<Success/>}/>
             </Routes>
-            <Footer />
+            <Footer/>
         </>
     )
 }
+
 
 export default App
