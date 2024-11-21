@@ -10,9 +10,10 @@ import Header from "../Header/Header.jsx";
 import Footer from "../Footer/Footer.jsx";
 import NotFoundPage from "../NotFoundPage/NotFoundPage.jsx";
 import Catalog from "../Catalog/Catalog.jsx";
+import CartPage from "../CartPage/CartPage.jsx";
+import Checkout from "../Checkout/Checkout.jsx";
 
 import {Route, Routes} from "react-router-dom";
-import CartPage from "../CartPage/CartPage.jsx";
 
 function App() {
     return (
@@ -23,6 +24,7 @@ function App() {
                 <Route path="/" element={<Home/>}/>
                 <Route path="/catalog/*" element={<Catalog/>}/>
                 <Route path="/cart/*" element={<CartPage/>}/>
+                <Route path="/checkout/*" element={<Checkout/>}/>
             </Routes>
             <Footer />
         </>
