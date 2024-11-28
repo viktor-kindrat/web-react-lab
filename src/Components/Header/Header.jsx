@@ -4,12 +4,15 @@ import {Link, useLocation, useNavigate} from "react-router-dom"
 
 import whiteLogo from "../../assets/SVG/logoWhite.svg"
 import darkLogo from "../../assets/SVG/logoDark.svg"
-import {ShoppingCart} from "@mui/icons-material";
+import {Logout, ShoppingCart} from "@mui/icons-material";
 import {useMemo} from "react";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 
 
 function Header() {
+    let auth = useSelector(state => state.auth);
+    let dispatch = useDispatch();
+
     let go = useNavigate();
     let cart = useSelector(state => state.cart);
 
@@ -42,7 +45,7 @@ function Header() {
                     </Typography>
                 </Link>
             </Box>
-            <Box component="div" className="Header__nav" columnGap="5px" display="flex" alignItems="center">
+            <Box component="div" className="Header__nav" columnGap="15px" display="flex" alignItems="center">
                 <Badge color="primary" badgeContent={count} anchorOrigin={{
                     vertical: 'top',
                     horizontal: 'left',
@@ -57,6 +60,18 @@ function Header() {
                         My cart
                     </Button>
                 </Badge>
+                {
+                    auth.isAuthenticated && <Button startIcon={<Logout color={"#ffffff"}/>}
+                                                    className="Header__cart-btn"
+                                                    variant="contained"
+                                                    color="error"
+                                                    onClick={() => dispatch({type: "auth/logout"})}
+                                                    sx={{color: "#ffffff"}}
+                                                    badge={2}
+                    >
+                        Logout
+                    </Button>
+                }
             </Box>
         </Box>
     )

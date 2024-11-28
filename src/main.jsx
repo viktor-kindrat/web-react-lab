@@ -9,6 +9,9 @@ import {Provider} from 'react-redux'
 
 import store from "./features/store.js"
 
+// eslint-disable-next-line
+import * as LottiePlayer from "@lottiefiles/lottie-player";
+
 const theme = createTheme({
     palette: {
         primary: {

@@ -15,20 +15,43 @@ import Checkout from "../Checkout/Checkout.jsx";
 import Success from "../Success/Success.jsx";
 
 
-import {Route, Routes} from "react-router-dom";
+import {Navigate, Route, Routes} from "react-router-dom";
+import AuthForm from "../AuthForm/AuthForm.jsx";
+import {useSelector} from "react-redux";
+
+
+const ProtectedRoute = ({isAuthenticated, children}) => {
+    return isAuthenticated ? children : <Navigate to="/login"/>;
+};
 
 
 function App() {
+    let auth = useSelector(state => state.auth);
+    let isAuthenticated = auth.isAuthenticated;
+
     return (
         <>
             <Header/>
             <Routes>
                 <Route path="*" element={<NotFoundPage/>}/>
-                <Route path="/" element={<Home/>}/>
-                <Route path="/catalog/*" element={<Catalog/>}/>
-                <Route path="/cart/*" element={<CartPage/>}/>
-                <Route path="/checkout/*" element={<Checkout/>}/>
-                <Route path="/success/" element={<Success/>}/>
+                <Route path="/login" element={<AuthForm/>}/>
+                <Route path="/signup" element={<AuthForm/>}/>
+
+                <Route path="/" element={<ProtectedRoute isAuthenticated={isAuthenticated}>
+                    <Home/>
+                </ProtectedRoute>}/>
+                <Route path="/catalog/*" element={<ProtectedRoute isAuthenticated={isAuthenticated}>
+                    <Catalog/>
+                </ProtectedRoute>}/>
+                <Route path="/cart/*" element={<ProtectedRoute isAuthenticated={isAuthenticated}>
+                    <CartPage/>
+                </ProtectedRoute>}/>
+                <Route path="/checkout/*" element={<ProtectedRoute isAuthenticated={isAuthenticated}>
+                    <Checkout/>
+                </ProtectedRoute>}/>
+                <Route path="/success/" element={<ProtectedRoute isAuthenticated={isAuthenticated}>
+                    <Success/>
+                </ProtectedRoute>}/>
             </Routes>
             <Footer/>
         </>
