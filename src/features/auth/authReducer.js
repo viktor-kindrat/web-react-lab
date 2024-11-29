@@ -17,6 +17,7 @@ function authReducer(state = initialState, action) {
         case "auth/logout":
             upd = {...state, isAuthenticated: false, data: null}
             localStorage.setItem("auth", JSON.stringify(upd))
+            localStorage.removeItem("cart")
             return upd;
         default:
             return state

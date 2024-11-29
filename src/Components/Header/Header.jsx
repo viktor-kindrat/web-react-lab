@@ -46,31 +46,36 @@ function Header() {
                 </Link>
             </Box>
             <Box component="div" className="Header__nav" columnGap="15px" display="flex" alignItems="center">
-                <Badge color="primary" badgeContent={count} anchorOrigin={{
-                    vertical: 'top',
-                    horizontal: 'left',
-                }}>
-                    <Button startIcon={<ShoppingCart color={textColor}/>}
-                            className="Header__cart-btn"
-                            variant="text"
-                            onClick={()=>go("/cart")}
-                            sx={{color: textColor}}
-                            badge={2}
-                    >
-                        My cart
-                    </Button>
-                </Badge>
                 {
-                    auth.isAuthenticated && <Button startIcon={<Logout color={"#ffffff"}/>}
-                                                    className="Header__cart-btn"
-                                                    variant="contained"
-                                                    color="error"
-                                                    onClick={() => dispatch({type: "auth/logout"})}
-                                                    sx={{color: "#ffffff"}}
-                                                    badge={2}
-                    >
-                        Logout
-                    </Button>
+                    auth.isAuthenticated && <>
+                        <Badge color="primary" badgeContent={count} anchorOrigin={{
+                            vertical: 'top',
+                            horizontal: 'left',
+                        }}>
+                            <Button startIcon={<ShoppingCart color={textColor}/>}
+                                    className="Header__cart-btn"
+                                    variant="text"
+                                    onClick={()=>go("/cart")}
+                                    sx={{color: textColor}}
+                                    badge={2}
+                            >
+                                My cart
+                            </Button>
+                        </Badge>
+                        <Button startIcon={<Logout color={"#ffffff"}/>}
+                                className="Header__cart-btn"
+                                variant="contained"
+                                color="error"
+                                onClick={() => {
+                                    dispatch({type: "cart/clean"})
+                                    dispatch({type: "auth/logout"})
+                                }}
+                                sx={{color: "#ffffff"}}
+                                badge={2}
+                        >
+                            Logout
+                        </Button>
+                    </>
                 }
             </Box>
         </Box>
